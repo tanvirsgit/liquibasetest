@@ -1,14 +1,61 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <changeSet author="welldev006 (generated)" id="1625554214502-1">
+
+    <changeSet id="1" author="Tanvir">
         <createTable tableName="department">
-            <column autoIncrement="true" name="id" type="INT">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="VARCHAR(50)">
+            <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column defaultValueBoolean="true" name="active" type="BIT(1)"/>
+            <column name="active" type="bit(1)" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="3" author="Tanvir">
+        <addColumn tableName="department">
+            <column name="phone" type="int">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2" author="Tanvir">
+        <insert tableName="department">
+            <column name="name" value="Bob"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="phone" value="124"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="4" author="Tanvir">
+        <insert tableName="department">
+            <column name="name" value="Alex"/>
+            <column name="active" valueBoolean="true"/>
+            <column name="phone" value="3333"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="5" author="Tanvir">
+        <dropColumn tableName="department">
+            <column name="active"/>
+        </dropColumn>
+    </changeSet>
+
+    <changeSet id="6" author="Tanvir">
+        <update tableName="department">
+            <column name="phone" value="1111111"/>
+            <where>name='Alex'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="7" author="Tanvir">
+        <delete tableName="department">
+            <where>name='Alex'</where>
+        </delete>
+    </changeSet>
+
 </databaseChangeLog>

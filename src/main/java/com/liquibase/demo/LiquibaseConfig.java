@@ -1,16 +1,11 @@
 package com.liquibase.demo;
 
 import liquibase.integration.spring.SpringLiquibase;
-import org.hibernate.cfg.AvailableSettings;
-import org.hibernate.dialect.MySQL55Dialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
-import java.util.Properties;
 
 @Configuration
 public class LiquibaseConfig {
@@ -28,7 +23,7 @@ public class LiquibaseConfig {
     @Bean
     public SpringLiquibase liquibase(){
         SpringLiquibase springLiquibase = new SpringLiquibase();
-        springLiquibase.setChangeLog("dbchangelog.xml");
+        springLiquibase.setChangeLog("changeLog.sql");
         springLiquibase.setDataSource(dataSource());
 
         return springLiquibase;
